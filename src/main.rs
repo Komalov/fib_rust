@@ -1,3 +1,12 @@
+use clap::Parser;
+
+#[derive(Parser, Debug)]
+#[command(version, about, long_about = None)]
+struct Args {
+    #[arg(short, long, default_value_t = 1)]
+    value: usize,
+}
+
 fn fib_recursive(n: usize) -> usize {
     if n < 2 {
         return n;
@@ -22,12 +31,13 @@ fn fib_iter(n: usize) -> usize {
 }
 
 fn main() {
-    const VALUE: usize = 8;
-    let result_rec = fib_recursive(VALUE);
+    let value = Args::parse().value;
+
+    let result_rec = fib_recursive(value);
 
     println!("recursive result {}", result_rec);
 
-    let result_iter = fib_iter(VALUE);
+    let result_iter = fib_iter(value);
 
     println!("iterative result {}", result_iter);
 }
