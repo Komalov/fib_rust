@@ -4,7 +4,7 @@ version: 2.1
 jobs:
   test-rust:
     docker:
-      - image: cimg/rust:1.70
+      - image: cimg/rust:1.74
     steps:
       - checkout
       - restore_cache:
@@ -23,7 +23,7 @@ jobs:
       # Replace this with steps to deploy to users
       - run:
           name: deploy
-          command: '#e.g. ./deploy.sh'
+          command: "#e.g. ./deploy.sh"
 workflows:
   build-and-test:
     jobs:
